@@ -1,0 +1,16 @@
+{
+  "name": "mark85-cypress-api",
+  "version": "1.0.0",
+  "description": "Projeto de teste de API do mark85",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress run"
+  },
+  "author": "Taylla",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^12.17.1",
+    "cypress-plugin-api": "^2.11.1",
+    "mongodb": "^5.7.0"
+  }
+}
