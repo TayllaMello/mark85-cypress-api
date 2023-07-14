@@ -66,7 +66,7 @@ describe('POST /users', () => {
     })
 
     it('email is required ', () => {
-
+ 
       delete user.email
 
       cy.postUser(user)
