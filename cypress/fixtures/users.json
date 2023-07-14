@@ -1,0 +1,15 @@
+{
+    "login": {
+        "name": "Daniela",
+        "email": "daniela@yahoo.com",
+        "password": "teste123"
+    },
+    "inv_pass": {
+        "email": "daniela@yahoo.com",
+        "password": "teste123"
+    },
+    "email_404": {
+        "email": "404@yahoo.com",
+        "password": "teste123"
+    }
+}
