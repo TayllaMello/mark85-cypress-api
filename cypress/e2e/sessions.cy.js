@@ -2,13 +2,13 @@
 describe('POST /sessions', () => {
 
 
-    beforeEach(() => {
+    beforeEach(function()  {
         cy.fixture('users').then(function (users) {
             this.users = users
         })
     })
 
-    it.only('User session', () => {
+    it('User session', function () {
 
         const userData = this.users.login
 
@@ -28,7 +28,7 @@ describe('POST /sessions', () => {
             })
     });
 
-    it('invalid password', () => {
+    it('invalid password', function () {
         const user = this.users.inv_pass
 
         cy.postSession(user)
@@ -37,7 +37,7 @@ describe('POST /sessions', () => {
             })
     });
 
-    it('email not found', () => {
+    it('email not found', function () {
         const user = this.users.email_404
 
         cy.postSession(user)
@@ -46,13 +46,3 @@ describe('POST /sessions', () => {
             })
     });
 });
-
-Cypress.Commands.add('postSession', (user) => {
-    cy.api({
-        url: '/sessions',
-        method: 'POST',
-        body: { email: user.email, password: user.password },
-        failOnStatusCode: false
-    }).then(response => { return response })
-
-})
