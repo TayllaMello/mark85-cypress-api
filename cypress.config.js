@@ -21,8 +21,13 @@ module.exports = defineConfig({
           const tasks = db.collection('tasks')
           await tasks.deleteMany({ name: taskNme, user: user._id })
           return null
-        }
+        },
 
+        async deleteTaskLike(key) {
+          const tasks = db.collection('tasks')
+          await tasks.deleteMany({ name: { $regex: key } })
+          return null
+        }
       })
     },
     baseUrl: 'http://localhost:3333'

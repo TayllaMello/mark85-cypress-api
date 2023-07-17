@@ -7,14 +7,14 @@
         },
         "tasks": [
             {
-                "name": "ler um livro de astronomia",
+                "name": "Estud4r Typescript",
                 "tags": [
-                    "spacex",
-                    "falcon"
+                    "typescript",
+                    "ts"
                 ]
             },
             {
-                "name": "Estudar cypress",
+                "name": "Estud4r cypress",
                 "tags": [
                     "cypress",
                     "javascript",
@@ -22,9 +22,26 @@
                 ]
             },
             {
-                "name": "Estudar Javascript",
+                "name": "Estud4r Javascript",
                 "tags": [
                     "qax"
+                ]
+            }
+        ]
+    },
+    "unique": {
+        "user": {
+            "name": "Tony Stark",
+            "email": "tony@stark.com",
+            "password": "teste123"
+        },
+        "task": [
+            {
+                "name": "Construir a Mark87",
+                "tags": [
+                    "ark",
+                    "nanotech",
+                    "friday"
                 ]
             }
         ]
