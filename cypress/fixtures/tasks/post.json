@@ -1,0 +1,27 @@
+{
+    "create": {
+        "user": {
+            "name": "papito",
+            "email": "papito@yahoo.com",
+            "password": "teste123"
+        },
+        "task": {
+            "name": "Pagar fatura do certão",
+            "tags": [
+                "nubank",
+                "ourocard",
+                "smiles"
+            ]
+        }
+    },
+    "dup": {
+        "user": {
+            "name": "Jean Grey",
+            "email": "fenix@xmen.com",
+            "password": "teste123"
+        },
+        "task": {
+            "name": "fazer compras no mercado"
+        }
+    }
+}

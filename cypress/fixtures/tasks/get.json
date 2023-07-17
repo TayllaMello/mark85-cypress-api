@@ -1,0 +1,32 @@
+{
+    "list": {
+        "user": {
+            "name": "Charles Xavier",
+            "email": "xavier@xmen.com",
+            "password": "teste123"
+        },
+        "tasks": [
+            {
+                "name": "ler um livro de astronomia",
+                "tags": [
+                    "spacex",
+                    "falcon"
+                ]
+            },
+            {
+                "name": "Estudar cypress",
+                "tags": [
+                    "cypress",
+                    "javascript",
+                    "nodejs"
+                ]
+            },
+            {
+                "name": "Estudar Javascript",
+                "tags": [
+                    "qax"
+                ]
+            }
+        ]
+    }
+}
