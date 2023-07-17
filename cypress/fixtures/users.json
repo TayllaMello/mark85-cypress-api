@@ -1,0 +1,30 @@
+{
+    "login": {
+        "name": "Daniela",
+        "email": "daniela@yahoo.com",
+        "password": "teste123"
+    },
+    "inv_pass": {
+        "email": "daniela@yahoo.com",
+        "password": "123456"
+    },
+    "email_404": {
+        "email": "404@yahoo.com",
+        "password": "123456"
+    },
+    "create": {
+        "name": "Dani",
+        "email": "dani@yahoo.com",
+        "password": "teste123"
+    },
+    "dup_email": {
+        "name": "Taylla",
+        "email": "taylla@yahoo.com",
+        "password": "teste123"
+    },
+    "required": {
+        "name": "Taylla",
+        "email": "taylla@yahoo.com",
+        "password": "teste123"
+    }
+}
