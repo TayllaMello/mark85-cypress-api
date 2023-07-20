@@ -1,3 +1,5 @@
+const cypress = require("cypress");
+
 describe('GET /tasks', () => {
 
     beforeEach(function () {
@@ -10,9 +12,8 @@ describe('GET /tasks', () => {
 
         const { user, tasks } = this.tasks.list
 
-        cy.task('deleteTaskLike', 'Estud4r')
-
-        cy.task('deleteUser', user.email)
+        cy.task('removeTaskLike', 'Estud4r')
+        cy.task('removeUser', user.email)
         cy.postUser(user)
 
         cy.postSession(user)
@@ -21,49 +22,70 @@ describe('GET /tasks', () => {
                 tasks.forEach(function (t) {
                     cy.postTask(t, respUser.body.token)
                 })
-                cy.api({
-                    url: '/tasks',
-                    method: 'GET',
-                    headers: {
-                        Authorization: respUser.body.token
-                    },
-                    failOnStatusCode: false
-                }).then(response => {
-                    expect(response.status).to.eq(200)
-                }).its('body')
+                cy.getTasks(respUser.body.token)
+                    .then(response => {
+                        expect(response.status).to.eq(200)
+                    }).its('body')
                     .should('be.an', 'array')
                     .and('have.length', tasks.length)
             })
-
     })
-
 })
-
 
 describe('GET/tasks/:id', () => {
     beforeEach(function () {
         cy.fixture('tasks/get').then(function (tasks) {
             this.tasks = tasks
         })
-    });
+    })
 
     it('get unique task', function () {
         const { user, task } = this.tasks.unique
 
-        cy.task('deleteTask', task.name, user.email)
-        cy.task('deleteUser', user.email)
+        cy.task('removeTask', task.name, user.email)
+        cy.task('removeUser', user.email)
         cy.postUser(user)
 
         cy.postSession(user)
-            .then(userResp => {
+            .then(respUser => {
+                cy.postTask(task, respUser.body.token)
+                    .then(respTask => {
+                        cy.getUniqueTask(respTask.body._id, respUser.body.token)
+                            .then(response => {
+                                expect(response.status).to.eq(200)
+                            })
+                    })
+            })
+    })
 
-                cy.postTask(task)
-                    .then(taskResp => {
+    it('task not found ', function () {
+        const { user, task } = this.tasks.not_found
+
+        cy.task('removeTask', task.name, user.email)
+        cy.task('removeUser', user.email)
+        cy.postUser(user)
+
+        cy.postSession(user)
+            .then(respUser => {
+
+                cy.postTask(task, respUser.body.token)
+                    .then(respTask => {
+
+                        cy.deleteTask(respTask.body._id, respUser.body.token)
+                            .then(response => {
+                                expect(response.status).to.eq(204)
+                            })
+
+                        cy.getUniqueTask(respTask.body._id, respUser.body.token)
+                            .then(response => {
+                                expect(response.status).to.eq(404)
+                            })
+
                         cy.api({
-                            url: '/tasks/' + taskResp.body._id,
+                            url: '/tasks/' + respTask.body._id,
                             method: 'GET',
                             headers: {
-                                Authorization: userResp.body.token
+                                Authorization: respUser.body.token
                             },
                             failOnStatusCode: false
                         }).then(response => {
@@ -71,5 +93,5 @@ describe('GET/tasks/:id', () => {
                         })
                     })
             })
-    });
-});
+    })
+})

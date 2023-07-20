@@ -11,12 +11,12 @@ describe('POST/tasks', () => {
 
         const { user, task } = this.tasks.create
 
-        cy.task('deleteUser', user.email)
+        cy.task('removeUser', user.email)
         cy.postUser(user)
 
         cy.postSession(user)
             .then(userResp => {
-                cy.task('deleteTask', task.name)//, user.email)
+                cy.task('removeTask', task.name)//, user.email)
 
                 cy.postTask(task, userResp.body.token)
                     .then(response => {
@@ -34,12 +34,12 @@ describe('POST/tasks', () => {
 
         const { user, task } = this.tasks.dup
 
-        cy.task('deleteUser', user.email)
+        cy.task('removeUser', user.email)
         cy.postUser(user)
 
         cy.postSession(user)
             .then(userResp => {
-                cy.task('deleteTask', task.name)//, user.email)
+                cy.task('removeTask', task.name)//, user.email)
 
                 cy.postTask(task, userResp.body.token)
                 cy.postTask(task, userResp.body.token)
