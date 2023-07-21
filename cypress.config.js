@@ -1,6 +1,7 @@
 const { defineConfig } = require("cypress");
-
 const { connect } = require('./cypress/support/mongo')
+
+require('dotenv').config()
 
 module.exports = defineConfig({
   e2e: {
@@ -30,13 +31,13 @@ module.exports = defineConfig({
         }
       })
     },
-    baseUrl: 'http://localhost:3333',
+    baseUrl: process.env.BASE_URL,
     video: false,
     screenshotOnRunFailure: false,
     env: {
-      amqpHost: 'https://woodpecker.rmq.cloudamqp.com/api/queues/isirryhn',
-      amqpQueue: 'tasks',
-      amqpToken: 'Basic aXNpcnJ5aG46ZVo3eXZxd0JqSXlTU2RrRElGSTVLMUxvZkc2NE5sbk0='
+      amqpHost: process.env.AMQP_HOST,
+      amqpQueue: process.env.AMQP_QUEUE,
+      amqpToken: process.env.AMQP_TOKEN
     }
   },
 });
