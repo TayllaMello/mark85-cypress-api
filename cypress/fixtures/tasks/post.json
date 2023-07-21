@@ -5,7 +5,7 @@
             "email": "papito@yahoo.com",
             "password": "teste123"
         },
-        "task": {
+        "tasks": {
             "name": "Pagar fatura do certão",
             "tags": [
                 "nubank",
